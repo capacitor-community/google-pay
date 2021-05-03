@@ -58,6 +58,19 @@ export interface GooglePayMerchantInfo {
   merchantId: string;
 }
 
+export interface GooglePayPaymentMethodData {
+  description: string;
+  info: {
+    cardDetails: string;
+    cardNetwork: string;
+  };
+  tokenizationData: {
+    token: string;
+    type: string;
+  };
+  type: string;
+}
+
 export interface GooglePayPlugin {
   initGooglePayClient(options: {
     environment: GooglePayEnvironment;
@@ -70,5 +83,5 @@ export interface GooglePayPlugin {
     allowedPaymentMethods: GooglePayPaymentMethod[];
     transactionInfo: GooglePayTransactionInfo;
     merchantInfo: GooglePayMerchantInfo;
-  }): Promise<any>;
+  }): Promise<GooglePayPaymentMethodData & GooglePayVersion>;
 }
