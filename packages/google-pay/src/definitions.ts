@@ -75,7 +75,7 @@ export interface GooglePayPlugin {
   initGooglePayClient(options: {
     environment: GooglePayEnvironment;
     version: GooglePayVersion;
-  }): Promise<{ ready: boolean }>;
+  }): Promise<{ isReady: boolean }>;
   canMakePayments(options: {
     allowedPaymentMethods: GooglePayPaymentMethod[];
   }): Promise<{ canMakePayments: boolean }>;
