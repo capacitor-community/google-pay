@@ -6,7 +6,9 @@ module.exports = {
   title: 'Google Pay',
   tagline: 'Dinosaurs are cool',
   url: 'https://ionic.io',
+  trailingSlash: false,
   baseUrl: '/docs/google-pay/',
+  baseUrlIssueBanner: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
@@ -81,10 +83,7 @@ module.exports = {
       additionalLanguages: ['shell-session'],
     },
   },
-  plugins: [
-    '@ionic-internal/docusaurus-plugin-tag-manager',
-    'docusaurus-plugin-sass',
-  ],
+  plugins: ['@ionic-internal/docusaurus-plugin-tag-manager', 'docusaurus-plugin-sass'],
   themes: ['@ionic-internal/docusaurus-theme'],
   presets: [
     [
