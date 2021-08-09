@@ -34,7 +34,7 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
   }: {
     environment: GooglePayEnvironment;
     version: GooglePayVersion;
-  }): Promise<{ ready: boolean }> {
+  }): Promise<{ isReady: boolean }> {
     this._googlePayVersion = version;
     return new Promise((resolve, reject) => {
       // something
@@ -46,7 +46,7 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
         this._paymentsClient = new google.payments.api.PaymentsClient({
           environment,
         });
-        resolve({ ready: true });
+        resolve({ isReady: true });
       });
       scriptEl.addEventListener('error', err => {
         console.error('Unable to load Google Pay API: ', err);
