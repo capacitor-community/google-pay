@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Plugins } from '@capacitor/core';
 import {
+  GooglePay,
   GooglePayAllowedAuthMethods,
   GooglePayVersion,
   GooglePayPaymentMethod,
   GooglePayAllowedNetworks,
 } from '@ionic-enterprise/google-pay';
 
-const { GooglePay } = Plugins;
 
 @Injectable({
   providedIn: 'root',

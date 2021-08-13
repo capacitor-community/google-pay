@@ -39,7 +39,7 @@ public class MainActivity extends BridgeActivity {
 
 ## Plugins Methods
 
-### `GooglePay.initGooglePayClient(parameters): Promise<{ ready: boolean }>`
+### `GooglePay.initGooglePayClient(parameters): Promise<{ isReady: boolean }>`
 
 | Name        |          Type          | Description                                                        |
 | :---------- | :--------------------: | :----------------------------------------------------------------- |
@@ -49,7 +49,7 @@ public class MainActivity extends BridgeActivity {
 This method is used to initially configure the client both for Web and Android. This method must be called for any other methods are called, failure to do so will result in thrown errors from the other methods. Google Pay for web relies on an external JS library which this method will automatically add to your application when called. This method will return once the script has been successfully downloaded to the device and initialized. On Native, this step is not necessary as all of the needed libraries are bundled with the application.
 
 ```typescript
-const { ready } = await GooglePay.initGooglePayClient({
+const { isReady } = await GooglePay.initGooglePayClient({
   environment: 'TEST',
   version: {
     apiVersion: 2,

@@ -2,7 +2,7 @@ package io.ionic.enterprise.googlepay
 
 import com.getcapacitor.JSObject
 
-class GooglePayVersion(val apiVersion: Int, val apiVersionMinor: Int)
+class GooglePayVersion(val apiVersion: Int?, val apiVersionMinor: Int?)
 
 class TypeCasting {
     fun toVersion(version: JSObject): GooglePayVersion {

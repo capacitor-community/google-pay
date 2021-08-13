@@ -6,18 +6,19 @@ import com.getcapacitor.*
 import com.google.android.gms.wallet.WalletConstants
 
 @NativePlugin(
-        requestCodes=[Constants.LOAD_PAYMENT_DATA_REQUEST_CODE]
+    requestCodes=[Constants.LOAD_PAYMENT_DATA_REQUEST_CODE]
 )
 class GooglePay : Plugin() {
     private var pluginRef: GooglePayPlugin = GooglePayPlugin()
     private var caster: TypeCasting = TypeCasting()
     private var initComplete: Boolean = false
+    private var callbackId: String = ""
 
     @Override
     override fun handleOnActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.handleOnActivityResult(requestCode, resultCode, data)
-
-        val sCall = savedCall ?: return
+        val sCall = getBridge().getSavedCall(callbackId) ?: return
+        getBridge().releaseCall(sCall)
         pluginRef.handlePaymentResult(sCall, requestCode, resultCode, data)
     }
 
@@ -28,15 +29,15 @@ class GooglePay : Plugin() {
         val version = call.getObject("version")
         val success = pluginRef.initPaymentClient(getBridge().activity, env, caster.toVersion(version))
         initComplete = success
-        call.success(JSObject().apply {
-            put("ready", success)
+        call.resolve(JSObject().apply {
+            put("isReady", success)
         })
     }
 
     @PluginMethod
     fun canMakePayments(call: PluginCall) {
         if (!initComplete) {
-            call.error(Constants.ERROR_NOT_INITIALIZED)
+            call.reject(Constants.ERROR_NOT_INITIALIZED)
             return
         }
         try {
@@ -44,32 +45,33 @@ class GooglePay : Plugin() {
                 val ret = JSObject().apply {
                     put("canMakePayments", result)
                 }
-                call.success(ret)
+                call.resolve(ret)
             }
         } catch (e: Exception) {
             Log.w("EXCEPTION THROWN!", e)
-            call.error(Constants.ERROR_INVALID_PARAMETERS)
+            call.reject(Constants.ERROR_INVALID_PARAMETERS)
         }
     }
 
     @PluginMethod
     fun makePaymentRequest(call: PluginCall) {
         if (!initComplete) {
-            call.error(Constants.ERROR_NOT_INITIALIZED)
+            call.reject(Constants.ERROR_NOT_INITIALIZED)
             return
         }
-        saveCall(call)
+        getBridge().saveCall(call)
+        callbackId = call.callbackId
         try {
             pluginRef.makePaymentRequest(
-                    call,
-                    getBridge().activity,
-                    call.getArray("allowedPaymentMethods"),
-                    call.getObject("transactionInfo"),
-                    call.getObject("merchantInfo")
+                call,
+                getBridge().activity,
+                call.getArray("allowedPaymentMethods"),
+                call.getObject("transactionInfo"),
+                call.getObject("merchantInfo")
             )
         } catch (e: Exception) {
             Log.w("EXCEPTION THROWN!", e)
-            call.error(Constants.ERROR_INVALID_PARAMETERS)
+            call.reject(Constants.ERROR_INVALID_PARAMETERS)
         }
     }
 }

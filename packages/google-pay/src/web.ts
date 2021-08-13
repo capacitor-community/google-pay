@@ -1,5 +1,6 @@
-import { WebPlugin } from '@capacitor/core';
-import {
+import { WebPlugin, registerPlugin } from '@capacitor/core';
+
+import type {
   GooglePayEnvironment,
   GooglePayMerchantInfo,
   GooglePayPaymentMethod,
@@ -8,7 +9,7 @@ import {
   GooglePayVersion,
 } from './definitions';
 
-declare var google: any;
+declare let google: any;
 
 export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
   private _paymentsClient: any;
@@ -50,7 +51,7 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
       });
       scriptEl.addEventListener('error', err => {
         console.error('Unable to load Google Pay API: ', err);
-        reject({ ready: false });
+        reject({ isReady: false });
       });
       document.body.appendChild(scriptEl);
     });
@@ -88,9 +89,8 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
   }
 }
 
-const GooglePay = new GooglePayWeb();
+const GooglePay = registerPlugin<GooglePayPlugin>('GooglePay', {
+  web: () => import('./web').then(m => new m.GooglePayWeb()),
+});
 
 export { GooglePay };
-
-import { registerWebPlugin } from '@capacitor/core';
-registerWebPlugin(GooglePay);

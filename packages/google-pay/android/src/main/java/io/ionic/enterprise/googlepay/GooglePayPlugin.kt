@@ -52,7 +52,7 @@ class GooglePayPlugin {
     fun makePaymentRequest(call: PluginCall, activity: Activity, allowedPaymentMethods: JSONArray, transactionInfo: JSONObject, merchantInfo: JSONObject) {
         val paymentData = getPaymentDataRequest(allowedPaymentMethods, transactionInfo, merchantInfo)
         if (paymentData == null) {
-            call.error(Constants.ERROR_UNABLE_TO_BUILD_REQUEST_DATA)
+            call.reject(Constants.ERROR_UNABLE_TO_BUILD_REQUEST_DATA)
             return
         }
         val request = PaymentDataRequest.fromJson(paymentData.toString())
@@ -60,7 +60,7 @@ class GooglePayPlugin {
         if (request != null) {
             AutoResolveHelper.resolveTask(paymentsClient.loadPaymentData(request), activity, Constants.LOAD_PAYMENT_DATA_REQUEST_CODE)
         } else {
-            call.error(Constants.ERROR_UNABLE_TO_BUILD_PAYMENT_REQUEST)
+            call.reject(Constants.ERROR_UNABLE_TO_BUILD_PAYMENT_REQUEST)
             return
         }
     }
@@ -76,15 +76,15 @@ class GooglePayPlugin {
                                 val ret = JSObject().apply {
                                     put("paymentResult", JSObject(paymentInfo))
                                 }
-                                call.success(ret)
+                                call.resolve(ret)
                             } catch (e: JSONException) {
-                                call.error(Constants.ERROR_PAYMENT_DATA_PARSE_FAILURE)
+                                call.reject(Constants.ERROR_PAYMENT_DATA_PARSE_FAILURE)
                             }
                         } }
                     }
                     Activity.RESULT_CANCELED -> {
                         // User Canceled Payment
-                        call.error(Constants.ERROR_USER_CANCELED)
+                        call.reject(Constants.ERROR_USER_CANCELED)
                     }
                     AutoResolveHelper.RESULT_ERROR -> {
                         AutoResolveHelper.getStatusFromIntent(data)?.let { status ->
@@ -95,7 +95,7 @@ class GooglePayPlugin {
                                 append(": ")
                                 append(status.statusMessage ?: "")
                             }
-                            call.error(sb.toString())
+                            call.reject(sb.toString())
                         }
                     }
                 }

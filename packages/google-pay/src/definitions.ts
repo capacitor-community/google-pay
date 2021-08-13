@@ -1,9 +1,3 @@
-declare module '@capacitor/core' {
-  interface PluginRegistry {
-    GooglePay: GooglePayPlugin;
-  }
-}
-
 export enum GooglePayAllowedNetworks {
   AMEX = 'AMEX',
   DISCOVER = 'DISCOVER',
