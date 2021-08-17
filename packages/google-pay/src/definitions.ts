@@ -79,3 +79,72 @@ export interface GooglePayPlugin {
     merchantInfo: GooglePayMerchantInfo;
   }): Promise<GooglePayPaymentMethodData & GooglePayVersion>;
 }
+
+export enum GooglePayErrorCodes {
+  Unknown,
+  ClientNotInitialized,
+  APIError,
+  UserCanceled,
+  PaymentDataParseFailure,
+  ActivityError,
+  InvalidUserSuppliedParams,
+  BuildPaymentRequestError,
+  BuildRequestDataError,
+}
+
+/** An error that can be thrown by the plugin. */
+export interface GooglePayError {
+  /**
+   * - Type: `string`
+   *
+   * A text description of the error that occurred.
+   */
+  message: string;
+  /**
+   * - Type: {@link GooglePayErrorCodes}
+   *
+   * The error code enum representing the error.
+   */
+  code: GooglePayErrorCodes;
+}
+
+/** @ignore */
+export function getGooglePayError(
+  code: GooglePayErrorCodes,
+  error?: Error | ErrorEvent,
+): GooglePayError {
+  let message = '';
+  switch (code) {
+    case GooglePayErrorCodes.ClientNotInitialized:
+      message = 'Plugin not initialized, call initGooglePayClient() first!';
+      break;
+    case GooglePayErrorCodes.APIError:
+      message = `Unable to load Google Pay API: ${error?.message}`;
+      break;
+    case GooglePayErrorCodes.UserCanceled:
+      message = 'User Canceled';
+      break;
+    case GooglePayErrorCodes.PaymentDataParseFailure:
+      message = `Payment Data Parse Error: ${error?.message}`;
+      break;
+    case GooglePayErrorCodes.ActivityError:
+      message = `Activity Error: ${error?.message}`;
+      break;
+    case GooglePayErrorCodes.InvalidUserSuppliedParams:
+      message = `Invalid User-Supplied Params: ${error?.message}`;
+      break;
+    case GooglePayErrorCodes.BuildPaymentRequestError:
+      message = `Unable To Create Payment Request: ${error?.message}`;
+      break;
+    case GooglePayErrorCodes.BuildRequestDataError:
+      message = `Unable To Build Request Data: ${error?.message}`;
+      break;
+    default:
+      message = `Unhandled Error: ${error?.message}`;
+  }
+
+  return {
+    message,
+    code,
+  };
+}

@@ -52,7 +52,9 @@ class GooglePayPlugin {
     fun makePaymentRequest(call: PluginCall, activity: Activity, allowedPaymentMethods: JSONArray, transactionInfo: JSONObject, merchantInfo: JSONObject) {
         val paymentData = getPaymentDataRequest(allowedPaymentMethods, transactionInfo, merchantInfo)
         if (paymentData == null) {
-            call.reject(Constants.ERROR_UNABLE_TO_BUILD_REQUEST_DATA)
+            val err = GooglePayErrors.getGooglePayError(GooglePayErrors.ERR_UNABLE_TO_BUILD_REQUEST_DATA, null)
+            call.reject(err.message, err.code.toString())
+
             return
         }
         val request = PaymentDataRequest.fromJson(paymentData.toString())
@@ -60,7 +62,8 @@ class GooglePayPlugin {
         if (request != null) {
             AutoResolveHelper.resolveTask(paymentsClient.loadPaymentData(request), activity, Constants.LOAD_PAYMENT_DATA_REQUEST_CODE)
         } else {
-            call.reject(Constants.ERROR_UNABLE_TO_BUILD_PAYMENT_REQUEST)
+            val err = GooglePayErrors.getGooglePayError(GooglePayErrors.ERR_UNABLE_TO_BUILD_PAYMENT_REQUEST, null)
+            call.reject(err.message, err.code.toString())
             return
         }
     }
@@ -78,18 +81,21 @@ class GooglePayPlugin {
                                 }
                                 call.resolve(ret)
                             } catch (e: JSONException) {
-                                call.reject(Constants.ERROR_PAYMENT_DATA_PARSE_FAILURE)
+                                val err = GooglePayErrors.getGooglePayError(GooglePayErrors.ERR_PAYMENT_DATA_PARSE_FAILURE, e)
+                                call.reject(err.message, err.code.toString())
                             }
                         } }
                     }
                     Activity.RESULT_CANCELED -> {
                         // User Canceled Payment
-                        call.reject(Constants.ERROR_USER_CANCELED)
+                        val err = GooglePayErrors.getGooglePayError(GooglePayErrors.ERR_USER_CANCELED, null)
+                        call.reject(err.message, err.code.toString())
                     }
                     AutoResolveHelper.RESULT_ERROR -> {
                         AutoResolveHelper.getStatusFromIntent(data)?.let { status ->
                             val sb = StringBuilder().apply {
-                                append(Constants.ERROR_GOOGLE_PAY_ACTIVITY_ERROR_RESULT)
+                                val err = GooglePayErrors.getGooglePayError(GooglePayErrors.ERR_GOOGLE_PAY_ACTIVITY_ERROR_RESULT, null)
+                                append(err.message)
                                 append(" - ")
                                 append(status.statusCode.toString())
                                 append(": ")

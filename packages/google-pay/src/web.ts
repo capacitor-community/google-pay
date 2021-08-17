@@ -8,6 +8,7 @@ import type {
   GooglePayTransactionInfo,
   GooglePayVersion,
 } from './definitions';
+import { getGooglePayError, GooglePayErrorCodes } from './definitions';
 
 declare let google: any;
 
@@ -24,7 +25,7 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
 
   private get paymentsClient(): any {
     if (!this._paymentsClient) {
-      throw new Error('Google Pay Web Client not initialized');
+      throw getGooglePayError(GooglePayErrorCodes.ClientNotInitialized);
     }
     return this._paymentsClient;
   }
@@ -38,7 +39,6 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
   }): Promise<{ isReady: boolean }> {
     this._googlePayVersion = version;
     return new Promise((resolve, reject) => {
-      // something
       const scriptEl = document.createElement('script');
       scriptEl.src = 'https://pay.google.com/gp/p/js/pay.js';
       scriptEl.async = true;
@@ -51,7 +51,7 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
       });
       scriptEl.addEventListener('error', err => {
         console.error('Unable to load Google Pay API: ', err);
-        reject({ isReady: false });
+        reject(getGooglePayError(GooglePayErrorCodes.APIError, err));
       });
       document.body.appendChild(scriptEl);
     });
@@ -85,6 +85,17 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
       return paymentData;
     } catch (e) {
       console.error(e);
+
+      if (e.statusCode === 'CANCELED') {
+        throw getGooglePayError(GooglePayErrorCodes.UserCanceled);
+      }
+
+      const error: Error = {
+        message: e.statusMessage,
+        name: e.statusCode,
+      };
+
+      throw getGooglePayError(GooglePayErrorCodes.Unknown, error);
     }
   }
 }

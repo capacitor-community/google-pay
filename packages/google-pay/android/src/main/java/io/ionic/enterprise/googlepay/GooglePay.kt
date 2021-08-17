@@ -37,7 +37,8 @@ class GooglePay : Plugin() {
     @PluginMethod
     fun canMakePayments(call: PluginCall) {
         if (!initComplete) {
-            call.reject(Constants.ERROR_NOT_INITIALIZED)
+            val err = GooglePayErrors.getGooglePayError(GooglePayErrors.ERR_NOT_INITIALIZED, null)
+            call.reject(err.message, err.code.toString())
             return
         }
         try {
@@ -49,14 +50,16 @@ class GooglePay : Plugin() {
             }
         } catch (e: Exception) {
             Log.w("EXCEPTION THROWN!", e)
-            call.reject(Constants.ERROR_INVALID_PARAMETERS)
+            val err = GooglePayErrors.getGooglePayError(GooglePayErrors.ERR_INVALID_PARAMETERS, e)
+            call.reject(err.message, err.code.toString())
         }
     }
 
     @PluginMethod
     fun makePaymentRequest(call: PluginCall) {
         if (!initComplete) {
-            call.reject(Constants.ERROR_NOT_INITIALIZED)
+            val err = GooglePayErrors.getGooglePayError(GooglePayErrors.ERR_NOT_INITIALIZED, null)
+            call.reject(err.message, err.code.toString())
             return
         }
         getBridge().saveCall(call)
@@ -71,7 +74,8 @@ class GooglePay : Plugin() {
             )
         } catch (e: Exception) {
             Log.w("EXCEPTION THROWN!", e)
-            call.reject(Constants.ERROR_INVALID_PARAMETERS)
+            val err = GooglePayErrors.getGooglePayError(GooglePayErrors.ERR_INVALID_PARAMETERS, e)
+            call.reject(err.message, err.code.toString())
         }
     }
 }
