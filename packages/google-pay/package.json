@@ -14,11 +14,16 @@
     "build": "npm run clean && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
+    "remove-void-implements": "node ../../scripts/remove-void-implements.js",
+    "docs": "typedoc --plugin typedoc-plugin-markdown --theme ./node_modules/@ionic/markdown-docs-theme/dist src/index.ts && rm -rf ../../website/docs/{enums,interfaces,classes} && mv api/{enums,interfaces,classes} ../../website/docs && mv api/modules.md ../../website/docs/modules.md && rm -rf api",
     "prepublishOnly": "npm run build"
   },
   "author": "Ionic",
   "license": "MIT",
   "devDependencies": {
+    "@ionic/markdown-docs-theme": "^3.0.1",
+    "typedoc": "^0.20.30",
+    "typedoc-plugin-markdown": "3.6.0",
     "@capacitor/android": "^3.1.1",
     "@capacitor/core": "^3.1.1",
     "@capacitor/ios": "^3.1.1",

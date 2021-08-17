@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import {
+  GooglePayAllowedAuthMethod,
   GooglePay,
-  GooglePayAllowedAuthMethods,
+  GooglePayEnvironment,
   GooglePayVersion,
   GooglePayPaymentMethod,
-  GooglePayAllowedNetworks,
+  GooglePayAllowedNetwork,
 } from '@ionic-enterprise/google-pay';
 
 
@@ -21,10 +22,10 @@ export class GooglePayService {
       type: 'CARD',
       parameters: {
         allowedAuthMethods: [
-          GooglePayAllowedAuthMethods.PAN_ONLY,
-          GooglePayAllowedAuthMethods.CRYPTOGRAM_3DS,
+          GooglePayAllowedAuthMethod.PAN_ONLY,
+          GooglePayAllowedAuthMethod.CRYPTOGRAM_3DS,
         ],
-        allowedCardNetworks: [GooglePayAllowedNetworks.VISA],
+        allowedCardNetworks: [GooglePayAllowedNetwork.VISA],
       },
       tokenizationSpecification: {
         type: 'PAYMENT_GATEWAY',
@@ -39,18 +40,18 @@ export class GooglePayService {
   constructor() {}
 
   public async init(): Promise<void> {
-    const res = await GooglePay.initGooglePayClient({
-      environment: 'TEST',
+    const { isReady } = await GooglePay.initGooglePayClient({
+      environment: GooglePayEnvironment.TEST,
       version: this.googlePayVersion,
     });
-    console.log('INIT RES', JSON.stringify(res));
+    console.log('IS READY: ', isReady);
   }
 
   public async canMakePayment(): Promise<void> {
     const res = await GooglePay.canMakePayments({
-      allowedPaymentMethods: this.allowedPaymentMethods,
+      allowedPaymentMethods: this.allowedPaymentMethods
     });
-    console.log('CAN MAKE PAYMENT', JSON.stringify(res));
+    console.log('CAN MAKE PAYMENTS', JSON.stringify(res));
   }
 
   public async makePaymentRequest(): Promise<void> {

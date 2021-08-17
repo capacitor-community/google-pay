@@ -1,11 +1,12 @@
 import { WebPlugin, registerPlugin } from '@capacitor/core';
 
 import type {
-  GooglePayEnvironment,
-  GooglePayMerchantInfo,
-  GooglePayPaymentMethod,
+  GooglePayCanMakePaymentsResponse,
+  GooglePayInitClientRequest,
+  GooglePayInitClientResponse,
+  GooglePayPaymentRequest,
   GooglePayPlugin,
-  GooglePayTransactionInfo,
+  GooglePayRequest,
   GooglePayVersion,
 } from './definitions';
 import { getGooglePayError, GooglePayErrorCodes } from './definitions';
@@ -13,16 +14,17 @@ import { getGooglePayError, GooglePayErrorCodes } from './definitions';
 declare let google: any;
 
 export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
+  /** @ignore */
   private _paymentsClient: any;
+  /** @ignore */
   private _googlePayVersion?: GooglePayVersion;
 
+  /** @ignore */
   constructor() {
-    super({
-      name: 'GooglePay',
-      platforms: ['web'],
-    });
+    super();
   }
 
+  /** @ignore */
   private get paymentsClient(): any {
     if (!this._paymentsClient) {
       throw getGooglePayError(GooglePayErrorCodes.ClientNotInitialized);
@@ -33,10 +35,7 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
   async initGooglePayClient({
     environment,
     version,
-  }: {
-    environment: GooglePayEnvironment;
-    version: GooglePayVersion;
-  }): Promise<{ isReady: boolean }> {
+  }: GooglePayInitClientRequest): Promise<GooglePayInitClientResponse> {
     this._googlePayVersion = version;
     return new Promise((resolve, reject) => {
       const scriptEl = document.createElement('script');
@@ -57,13 +56,13 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
     });
   }
 
-  async canMakePayments(options: {
-    allowedPaymentMethods: GooglePayPaymentMethod[];
-  }): Promise<{ canMakePayments: boolean }> {
+  async canMakePayments(
+    request: GooglePayRequest,
+  ): Promise<GooglePayCanMakePaymentsResponse> {
     try {
       const isReady = await this.paymentsClient.isReadyToPay({
         ...this._googlePayVersion,
-        ...options,
+        ...request,
       });
       return { canMakePayments: isReady.result };
     } catch (e) {
@@ -72,11 +71,7 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
     }
   }
 
-  async makePaymentRequest(request: {
-    allowedPaymentMethods: GooglePayPaymentMethod[];
-    transactionInfo: GooglePayTransactionInfo;
-    merchantInfo: GooglePayMerchantInfo;
-  }): Promise<any> {
+  async makePaymentRequest(request: GooglePayPaymentRequest): Promise<any> {
     try {
       const paymentData = await this.paymentsClient.loadPaymentData({
         ...this._googlePayVersion,
@@ -100,8 +95,8 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
   }
 }
 
-const GooglePay = registerPlugin<GooglePayPlugin>('GooglePay', {
+const GooglePayImpl = registerPlugin<GooglePayPlugin>('GooglePay', {
   web: () => import('./web').then(m => new m.GooglePayWeb()),
 });
 
-export { GooglePay };
+export { GooglePayImpl };

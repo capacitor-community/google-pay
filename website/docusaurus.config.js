@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Google Pay',
-  tagline: 'Dinosaurs are cool',
+  tagline: '[put tagline in here]',
   url: 'https://ionic.io',
   trailingSlash: false,
   baseUrl: '/docs/google-pay/',
