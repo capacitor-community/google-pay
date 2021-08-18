@@ -1,7 +1,13 @@
 {
   "name": "@ionic-enterprise/google-pay",
   "version": "0.1.1",
-  "description": "Google Pay Plugin",
+  "description": "Capacitor Plugin used to enable Google Pay in an Application",
+  "author": "Ionic Team <hi@ionic.io> (https://ionicframework.com)",
+  "license": "SEE LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ionic-team/enterprise-google-pay"
+  },
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -18,8 +24,6 @@
     "docs": "typedoc --plugin typedoc-plugin-markdown --theme ./node_modules/@ionic/markdown-docs-theme/dist src/index.ts && rm -rf ../../website/docs/{enums,interfaces,classes} && mv api/{enums,interfaces,classes} ../../website/docs && mv api/modules.md ../../website/docs/modules.md && rm -rf api",
     "prepublishOnly": "npm run build"
   },
-  "author": "Ionic",
-  "license": "MIT",
   "devDependencies": {
     "@ionic/markdown-docs-theme": "^3.0.1",
     "typedoc": "^0.20.30",
@@ -45,7 +49,7 @@
     "dist/",
     "ios/",
     "android/",
-    "CapacitorPluginGooglePay.podspec"
+    "IonicEnterpriseGooglePay.podspec"
   ],
   "keywords": [
     "capacitor",
