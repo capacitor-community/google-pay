@@ -8,14 +8,14 @@ import Capacitor
 @objc(GooglePayPlugin)
 public class GooglePayPlugin: CAPPlugin {
     @objc func initGooglePayClient(_ call: CAPPluginCall) {
-        call.reject("Google Pay is not available on iOS.");
+        call.reject("Google Pay is not available on iOS.")
     }
 
     @objc func canMakePayments(_ call: CAPPluginCall) {
-        call.reject("Google Pay is not available on iOS.");
+        call.reject("Google Pay is not available on iOS.")
     }
 
     @objc func makePaymentRequest(_ call: CAPPluginCall) {
-        call.reject("Google Pay is not available on iOS.");
+        call.reject("Google Pay is not available on iOS.")
     }
 }

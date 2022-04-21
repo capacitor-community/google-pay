@@ -4,9 +4,7 @@ on:
   pull_request:
     types:
       - opened
-      - edited
       - synchronize
-      - ready_for_review
 
 jobs:
   setup:
@@ -17,22 +15,13 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.0
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/checkout@v2
-      - name: Restore Dependency Cache
-        id: cache-modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */node_modules
-          key: dependency-cache-${{ hashFiles('package.json', '*/package.json') }}
   conventional:
     name: Conventional PR
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: '14.19.1'
       - uses: actions/checkout@v2
       - uses: amannn/action-semantic-pull-request@v3.4.0
         with:
@@ -45,104 +34,33 @@ jobs:
     needs:
       - setup
     steps:
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
       - uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: '14.19.1'
       - uses: actions/checkout@v2
       - name: Restore Dependency Cache
         uses: actions/cache@v1
         with:
           path: ~/.npm
-          key: ${{ runner.OS }}-dependency-cache-${{ hashFiles('**/package.json') }}
+          key: ${{ runner.OS }}-dependencies-cache-${{ hashFiles('**/package.json') }}
       - run: npm install
       - run: npx lerna run lint
-  verify-ios:
+  build:
     runs-on: macos-latest
-    timeout-minutes: 30
+    timeout-minutes: 10
     needs:
       - setup
-      - lint
     steps:
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
       - uses: actions/setup-node@v1
         with:
-          node-version: 14.x
-      - uses: actions/checkout@v2
-      - name: Restore Dependency Cache
-        id: cache-modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */node_modules
-          key: dependency-cache-${{ hashFiles('package.json', '*/package.json') }}
-      - run: npm install --no-package-lock
-        working-directory: ./packages/test-project
-      - run: npm run verify:ios
-        working-directory: ./packages/test-project
-  verify-android:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    needs:
-      - setup
-      - lint
-    steps:
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-      - uses: actions/checkout@v2
-      - name: Restore Dependency Cache
-        id: cache-modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */node_modules
-          key: dependency-cache-${{ hashFiles('package.json', '*/package.json') }}
-      - run: npm install --no-package-lock
-        working-directory: ./packages/test-project
-      - run: npm run verify:android
-        working-directory: ./packages/test-project
-  verify-web:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    needs:
-      - setup
-      - lint
-    steps:
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-      - uses: actions/checkout@v2
-      - name: Restore Dependency Cache
-        id: cache-modules
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            */node_modules
-          key: dependency-cache-${{ hashFiles('package.json', '*/package.json') }}
-      - run: npm install --no-package-lock
-        working-directory: ./packages/test-project
-      - run: npm run verify:web
-        working-directory: ./packages/test-project
-  test:
-    runs-on: macos-latest
-    timeout-minutes: 15
-    needs:
-      - setup
-      - lint
-      - verify-ios
-      - verify-android
-      - verify-web
-    steps:
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
+          node-version: '14.19.1'
       - uses: actions/checkout@v2
       - name: Restore Dependency Cache
         uses: actions/cache@v1
         with:
           path: ~/.npm
-          key: ${{ runner.OS }}-dependency-cache-${{ hashFiles('**/package.json') }}
+          key: ${{ runner.OS }}-dependencies-cache-${{ hashFiles('**/package.json') }}
       - run: npm install
-      - run: npx lerna run test
+      - run: npx lerna run --scope @ionic-enterprise/google-pay build

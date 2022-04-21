@@ -44,5 +44,9 @@
       "last 1 safari version"
     ]
   },
-  "prettier": "@ionic/prettier-config"
+  "prettier": "@ionic/prettier-config",
+  "volta": {
+    "node": "14.19.1",
+    "npm": "6.14.16"
+  }
 }
