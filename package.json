@@ -15,7 +15,7 @@
     "release:latest": "npm run lerna:version:latest",
     "clean-change-log": "node ./scripts/clean-changelog.js && lerna run clean-change-log",
     "update-changelog": "npm run clean-change-log && node ./scripts/update-docs-changelog.js",
-    "release-ci": "lerna updated -l && lerna version --conventional-commits --conventional-graduate --yes && lerna publish from-git --no-verify-access --yes"
+    "release-ci": "lerna updated -l && lerna version --conventional-commits --yes && lerna publish from-git --no-verify-access --yes"
   },
   "volta": {
     "node": "14.19.1",

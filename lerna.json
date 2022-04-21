@@ -25,7 +25,7 @@
       ],
       "conventionalCommits": true,
       "createRelease": "github",
-      "message": "release: %s",
+      "message": "chore(release): %s",
       "tagVersionPrefix": ""
     }
   }
