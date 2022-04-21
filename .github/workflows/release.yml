@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 0  
       - name: Fetching all tags
-        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+        run: git fetch --depth=0 origin +refs/tags/*:refs/tags/*
       - name: Install Dependencies
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
