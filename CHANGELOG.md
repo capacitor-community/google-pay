@@ -8,14 +8,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **android:** build error from core ktx version not being pinned ([#7](https://github.com/ionic-team/enterprise-google-pay/issues/7)) ([170bacb](https://github.com/ionic-team/enterprise-google-pay/commit/170bacb894cf7016be2012eb15d88e6aef210ce5))
-* fixes cap sync on iOS devices ([d72406b](https://github.com/ionic-team/enterprise-google-pay/commit/d72406bc38e6b7601ce0dae2cc5cad279a0e5143))
-* fixes the build errors on iOS devices and adds stub methods. ([3a5d2a3](https://github.com/ionic-team/enterprise-google-pay/commit/3a5d2a372fa04547aea5e622731139c9e4e5db73))
+* **android:** build error from core ktx version not being pinned  
+* fixes cap sync on iOS devices 
+* fixes the build errors on iOS devices and adds stub methods. 
 
 
 ### Reverts
 
-* Revert "chore(release): 1.0.1" ([62f83db](https://github.com/ionic-team/enterprise-google-pay/commit/62f83db7a9a7e35a24be8283e3d8d63ec575d4aa))
+* Revert "chore(release): 1.0.1" 
 
 
 
@@ -26,14 +26,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* fixes cap sync on iOS devices ([d72406b](https://github.com/ionic-team/enterprise-google-pay/commit/d72406bc38e6b7601ce0dae2cc5cad279a0e5143))
-* fixes the build errors on iOS devices and adds stub methods. ([3a5d2a3](https://github.com/ionic-team/enterprise-google-pay/commit/3a5d2a372fa04547aea5e622731139c9e4e5db73))
+* fixes cap sync on iOS devices 
+* fixes the build errors on iOS devices and adds stub methods. 
 
 
 
 
 
-# Change Log
 
 All notable changes to this project will be documented in this file.
 
