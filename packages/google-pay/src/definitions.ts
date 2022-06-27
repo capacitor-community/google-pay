@@ -351,14 +351,14 @@ export interface GooglePayShippingOptionParameters {
   /**
    * All of the shipping options available for the current request.
    */
-  shippingOptions: SelectionOption[];
+  shippingOptions: GooglePayShippingOption[];
   /**
    * An identifier to the default selected shipping option. If this field isn't provided, the first option is the default option.
    */
   defaultSelectedOptionId?: string;
 }
 
-export interface SelectionOption {
+export interface GooglePayShippingOption {
   /**
    * The developer can put any value that needs to be returned in PaymentData.
    */
