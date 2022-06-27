@@ -106,6 +106,37 @@ export interface GooglePayPaymentMethodParameters {
    * An array of card networks that are accepted for payment.
    */
   allowedCardNetworks: GooglePayAllowedNetwork[];
+
+  /**
+   * Set to true if you require a billing address. A billing address should only be requested if it's required to process the transaction. Additional data requests can increase friction in the checkout process and lead to a lower conversion rate.
+   */
+  billingAddressRequired?: boolean;
+
+  /**
+   * The expected fields returned if {@link GooglePayBillingAddressParameters} is set to true.
+   */
+  billingAddressParameters?: GooglePayBillingAddressParameters
+}
+
+/**
+ * This object allows you to set additional fields to be returned for a requested billing address.
+ */
+export interface GooglePayBillingAddressParameters {
+  /**
+   * Billing address format required to complete the transaction.
+   */
+  format?: GooglePayBillingAddressFormat;
+  /**
+   * Set to true if a phone number is required to process the transaction.
+   */
+  phoneNumberRequired?: boolean;
+}
+
+export enum GooglePayBillingAddressFormat {
+  /** Name, country code, and postal code (default). **/
+  Minimal = "MIN",
+  /** Name, street address, locality, region, country code, and postal code. **/
+  Full = "FULL"
 }
 
 /** An object that specifies payment methods that are supported by the Google Pay API and your website. */
