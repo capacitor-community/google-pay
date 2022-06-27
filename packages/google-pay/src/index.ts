@@ -17,6 +17,7 @@ export {
   GooglePayShippingOptionParameters,
   GooglePayShippingOption,
   GooglePayRequest,
+  GooglePayError,
   GooglePayTokenizationSpecification,
   GooglePayTransactionInfo,
   GooglePayVersion,

@@ -67,6 +67,7 @@ export class GooglePayService {
         totalPrice: '1.00',
         totalPriceStatus: 'FINAL',
       },
+      emailRequired: true,
     });
     console.log('MAKE PAYMENT REQUEST', JSON.stringify(res));
   }
