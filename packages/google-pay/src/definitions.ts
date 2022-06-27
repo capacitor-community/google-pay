@@ -323,6 +323,68 @@ export interface GooglePayPaymentRequest {
    * An object that provides information about the merchant requesting payment data.
    */
   merchantInfo: GooglePayMerchantInfo;
+  /**
+   * Set to true to request an email address.
+   */
+  emailRequired?: boolean;
+  /**
+   * Set to true to request a full shipping address.
+   */
+  shippingAddressRequired?: boolean;
+  /**
+   * If shippingAddressRequired is set to true, specify shipping address restrictions.
+   */
+  shippingAddressParameters?: GooglePayShippingAddressParameters;
+  /**
+   * Set to true when the SHIPPING_OPTION callback intent is used. This field is required if you implement support for Authorize Payments or Dynamic Price Updates.
+   * 
+   * For more details see: {@link GooglePayShippingOptionParameters}
+   */
+  shippingOptionRequired?: boolean;
+  /**
+   * Set default options.
+   */
+  shippingOptionParameters?: GooglePayShippingOptionParameters[];
+}
+
+export interface GooglePayShippingOptionParameters {
+  /**
+   * All of the shipping options available for the current request.
+   */
+  shippingOptions: SelectionOption[];
+  /**
+   * An identifier to the default selected shipping option. If this field isn't provided, the first option is the default option.
+   */
+  defaultSelectedOptionId?: string;
+}
+
+export interface SelectionOption {
+  /**
+   * The developer can put any value that needs to be returned in PaymentData.
+   */
+  id: string;
+  /**
+   * The label to be displayed as the option.
+   */
+  label: string;
+  /**
+   * A descriptive text that is displayed below the option label.
+   */
+  description?: string;
+}
+
+/**
+ * This object is used to set shipping restrictions.
+ */
+export interface GooglePayShippingAddressParameters {
+  /**
+   * ISO 3166-1 alpha-2 country code values of the countries where shipping is allowed. If this object isn't specified, all shipping address countries are allowed.
+   */
+  allowedCountryCodes?: string[];
+  /**
+   * Set to true if a phone number is required for the provided shipping address.
+   */
+  phoneNumberRequired?: boolean;
 }
 
 /** A request object used to determine if the user is eligible to make payments on their device with the configured payment methods. */
