@@ -65,12 +65,20 @@ class GooglePay : Plugin() {
         getBridge().saveCall(call)
         callbackId = call.callbackId
         try {
+          val paymentRequest = PaymentRequest(
+              call.getArray("allowedPaymentMethods"),
+              call.getObject("transactionInfo"),
+              call.getObject("merchantInfo"),
+              call.getBoolean("emailRequired"),
+              call.getBoolean("shippingAddressRequired"),
+              call.getObject("shippingAddressParameters", null),
+              call.getBoolean("shippingOptionRequired"),
+              call.getArray("shippingOptionParameters", null)
+          )
             pluginRef.makePaymentRequest(
                 call,
                 getBridge().activity,
-                call.getArray("allowedPaymentMethods"),
-                call.getObject("transactionInfo"),
-                call.getObject("merchantInfo")
+                paymentRequest
             )
         } catch (e: Exception) {
             Log.w("EXCEPTION THROWN!", e)

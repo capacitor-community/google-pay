@@ -49,8 +49,8 @@ class GooglePayPlugin {
         }
     }
 
-    fun makePaymentRequest(call: PluginCall, activity: Activity, allowedPaymentMethods: JSONArray, transactionInfo: JSONObject, merchantInfo: JSONObject) {
-        val paymentData = getPaymentDataRequest(allowedPaymentMethods, transactionInfo, merchantInfo)
+    fun makePaymentRequest(call: PluginCall, activity: Activity, paymentRequest: PaymentRequest) {
+        val paymentData = paymentRequest.getRequest(version)
         if (paymentData == null) {
             val err = GooglePayErrors.getGooglePayError(GooglePayErrors.ERR_UNABLE_TO_BUILD_REQUEST_DATA, null)
             call.reject(err.message, err.code.toString())
@@ -113,19 +113,6 @@ class GooglePayPlugin {
         return try {
             version.apply {
                 put("allowedPaymentMethods", allowedPaymentMethods)
-            }
-        } catch (e: JSONException) {
-            Log.w("EXCEPTION THROWN!", e)
-            null
-        }
-    }
-
-    private fun getPaymentDataRequest(allowedPaymentMethods: JSONArray, transactionInfo: JSONObject, merchantInfo: JSONObject): JSONObject? {
-        return try {
-            version.apply {
-                put("allowedPaymentMethods", allowedPaymentMethods)
-                put("transactionInfo", transactionInfo)
-                put("merchantInfo", merchantInfo)
             }
         } catch (e: JSONException) {
             Log.w("EXCEPTION THROWN!", e)
