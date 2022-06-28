@@ -66,7 +66,7 @@ export class GooglePayService {
         currencyCode: 'USD',
         totalPrice: '1.00',
         totalPriceStatus: 'FINAL',
-      },      
+      },
       shippingAddressRequired: true,
     });
     console.log('MAKE PAYMENT REQUEST', JSON.stringify(res));
