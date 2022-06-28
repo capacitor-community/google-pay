@@ -25,7 +25,7 @@ export class GooglePayService {
           GooglePayAllowedAuthMethod.PAN_ONLY,
           GooglePayAllowedAuthMethod.CRYPTOGRAM_3DS,
         ],
-        allowedCardNetworks: [GooglePayAllowedNetwork.VISA],
+        allowedCardNetworks: [GooglePayAllowedNetwork.VISA, GooglePayAllowedNetwork.MASTERCARD],
       },
       tokenizationSpecification: {
         type: 'PAYMENT_GATEWAY',
@@ -66,8 +66,8 @@ export class GooglePayService {
         currencyCode: 'USD',
         totalPrice: '1.00',
         totalPriceStatus: 'FINAL',
-      },
-      emailRequired: true,
+      },      
+      shippingAddressRequired: true,
     });
     console.log('MAKE PAYMENT REQUEST', JSON.stringify(res));
   }
