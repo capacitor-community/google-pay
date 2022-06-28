@@ -115,7 +115,7 @@ export interface GooglePayPaymentMethodParameters {
   /**
    * The expected fields returned if {@link GooglePayBillingAddressParameters} is set to true.
    */
-  billingAddressParameters?: GooglePayBillingAddressParameters
+  billingAddressParameters?: GooglePayBillingAddressParameters;
 }
 
 /**
@@ -134,9 +134,9 @@ export interface GooglePayBillingAddressParameters {
 
 export enum GooglePayBillingAddressFormat {
   /** Name, country code, and postal code (default). **/
-  Minimal = "MIN",
+  Minimal = 'MIN',
   /** Name, street address, locality, region, country code, and postal code. **/
-  Full = "FULL"
+  Full = 'FULL',
 }
 
 /** An object that specifies payment methods that are supported by the Google Pay API and your website. */
@@ -337,7 +337,7 @@ export interface GooglePayPaymentRequest {
   shippingAddressParameters?: GooglePayShippingAddressParameters;
   /**
    * Set to true when the SHIPPING_OPTION callback intent is used. This field is required if you implement support for Authorize Payments or Dynamic Price Updates.
-   * 
+   *
    * For more details see: {@link GooglePayShippingOptionParameters}
    */
   shippingOptionRequired?: boolean;
