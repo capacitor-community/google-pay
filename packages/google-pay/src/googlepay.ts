@@ -2,6 +2,7 @@ import type {
   GooglePayCanMakePaymentsResponse,
   GooglePayInitClientRequest,
   GooglePayInitClientResponse,
+  GooglePayMakePaymentRequestResponse,
   GooglePayPaymentRequest,
   GooglePayRequest,
 } from './definitions';
@@ -62,7 +63,7 @@ export class GooglePay {
    */
   public static makePaymentRequest(
     request: GooglePayPaymentRequest,
-  ): Promise<any> {
+  ): Promise<GooglePayMakePaymentRequestResponse> {
     return GooglePayImpl.makePaymentRequest(request);
   }
 }

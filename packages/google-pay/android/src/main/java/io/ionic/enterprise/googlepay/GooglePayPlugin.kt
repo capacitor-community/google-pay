@@ -76,10 +76,7 @@ class GooglePayPlugin {
                         data?.let { intent -> PaymentData.getFromIntent(intent)?.let { paymentData ->
                             val paymentInfo = paymentData.toJson() ?: return
                             try {
-                                val ret = JSObject().apply {
-                                    put("paymentResult", JSObject(paymentInfo))
-                                }
-                                call.resolve(ret)
+                                call.resolve(JSObject(paymentInfo))
                             } catch (e: JSONException) {
                                 val err = GooglePayErrors.getGooglePayError(GooglePayErrors.ERR_PAYMENT_DATA_PARSE_FAILURE, e)
                                 call.reject(err.message, err.code.toString())

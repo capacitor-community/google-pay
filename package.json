@@ -5,6 +5,7 @@
     "lerna": "^4.0.0"
   },
   "scripts": {
+    "lerna": "lerna",
     "postinstall": "lerna bootstrap",
     "lerna:publish:dev": "lerna publish prerelease --conventional-commits --conventional-prerelease --no-changelog --preid dev-$(git rev-parse --short HEAD) --dist-tag dev --force-publish --no-git-tag-version --no-push --no-verify-access --yes",
     "lerna:publish:beta": "lerna publish from-git --conventional-commits --conventional-prerelease --preid beta --dist-tag next --force-publish --no-verify-access --yes",
@@ -18,7 +19,7 @@
     "release-ci": "lerna updated -l && lerna version --conventional-commits --yes && lerna publish from-git --no-verify-access --yes"
   },
   "volta": {
-    "node": "14.19.1",
-    "npm": "6.14.16"
+    "node": "16.15.1",
+    "npm": "8.11.0"
   }
 }

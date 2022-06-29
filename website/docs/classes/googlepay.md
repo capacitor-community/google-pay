@@ -79,4 +79,4 @@ Name | Type |
 :------ | :------ |
 `request` | [*GooglePayPaymentRequest*](../interfaces/googlepaypaymentrequest) |
 
-**Returns:** <span class="return-code">*Promise*<any\></span>
+**Returns:** <span class="return-code">*Promise*<[*GooglePayMakePaymentRequestResponse*](../interfaces/googlepaymakepaymentrequestresponse)\></span>

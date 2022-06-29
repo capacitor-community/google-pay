@@ -4,6 +4,7 @@ import type {
   GooglePayCanMakePaymentsResponse,
   GooglePayInitClientRequest,
   GooglePayInitClientResponse,
+  GooglePayMakePaymentRequestResponse,
   GooglePayPaymentRequest,
   GooglePayPlugin,
   GooglePayRequest,
@@ -71,14 +72,16 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
     }
   }
 
-  async makePaymentRequest(request: GooglePayPaymentRequest): Promise<any> {
+  async makePaymentRequest(
+    request: GooglePayPaymentRequest,
+  ): Promise<GooglePayMakePaymentRequestResponse> {
     try {
       const paymentData = await this.paymentsClient.loadPaymentData({
         ...this._googlePayVersion,
         ...request,
       });
       return paymentData;
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
 
       if (e.statusCode === 'CANCELED') {
