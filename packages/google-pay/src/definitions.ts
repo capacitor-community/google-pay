@@ -106,6 +106,37 @@ export interface GooglePayPaymentMethodParameters {
    * An array of card networks that are accepted for payment.
    */
   allowedCardNetworks: GooglePayAllowedNetwork[];
+
+  /**
+   * Set to true if you require a billing address. A billing address should only be requested if it's required to process the transaction. Additional data requests can increase friction in the checkout process and lead to a lower conversion rate.
+   */
+  billingAddressRequired?: boolean;
+
+  /**
+   * The expected fields returned if {@link GooglePayBillingAddressParameters} is set to true.
+   */
+  billingAddressParameters?: GooglePayBillingAddressParameters;
+}
+
+/**
+ * This object allows you to set additional fields to be returned for a requested billing address.
+ */
+export interface GooglePayBillingAddressParameters {
+  /**
+   * Billing address format required to complete the transaction.
+   */
+  format?: GooglePayBillingAddressFormat;
+  /**
+   * Set to true if a phone number is required to process the transaction.
+   */
+  phoneNumberRequired?: boolean;
+}
+
+export enum GooglePayBillingAddressFormat {
+  /** Name, country code, and postal code (default). **/
+  Minimal = 'MIN',
+  /** Name, street address, locality, region, country code, and postal code. **/
+  Full = 'FULL',
 }
 
 /** An object that specifies payment methods that are supported by the Google Pay API and your website. */
@@ -292,6 +323,68 @@ export interface GooglePayPaymentRequest {
    * An object that provides information about the merchant requesting payment data.
    */
   merchantInfo: GooglePayMerchantInfo;
+  /**
+   * Set to true to request an email address.
+   */
+  emailRequired?: boolean;
+  /**
+   * Set to true to request a full shipping address.
+   */
+  shippingAddressRequired?: boolean;
+  /**
+   * If shippingAddressRequired is set to true, specify shipping address restrictions.
+   */
+  shippingAddressParameters?: GooglePayShippingAddressParameters;
+  /**
+   * Set to true when the SHIPPING_OPTION callback intent is used. This field is required if you implement support for Authorize Payments or Dynamic Price Updates.
+   *
+   * For more details see: {@link GooglePayShippingOptionParameters}
+   */
+  shippingOptionRequired?: boolean;
+  /**
+   * Set default options.
+   */
+  shippingOptionParameters?: GooglePayShippingOptionParameters[];
+}
+
+export interface GooglePayShippingOptionParameters {
+  /**
+   * All of the shipping options available for the current request.
+   */
+  shippingOptions: GooglePayShippingOption[];
+  /**
+   * An identifier to the default selected shipping option. If this field isn't provided, the first option is the default option.
+   */
+  defaultSelectedOptionId?: string;
+}
+
+export interface GooglePayShippingOption {
+  /**
+   * The developer can put any value that needs to be returned in PaymentData.
+   */
+  id: string;
+  /**
+   * The label to be displayed as the option.
+   */
+  label: string;
+  /**
+   * A descriptive text that is displayed below the option label.
+   */
+  description?: string;
+}
+
+/**
+ * This object is used to set shipping restrictions.
+ */
+export interface GooglePayShippingAddressParameters {
+  /**
+   * ISO 3166-1 alpha-2 country code values of the countries where shipping is allowed. If this object isn't specified, all shipping address countries are allowed.
+   */
+  allowedCountryCodes?: string[];
+  /**
+   * Set to true if a phone number is required for the provided shipping address.
+   */
+  phoneNumberRequired?: boolean;
 }
 
 /** A request object used to determine if the user is eligible to make payments on their device with the configured payment methods. */
