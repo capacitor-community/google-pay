@@ -15,5 +15,6 @@ export {
   GooglePayTokenizationSpecification,
   GooglePayTransactionInfo,
   GooglePayVersion,
+  GooglePayMakePaymentRequestResponse,
 } from './definitions';
 export * from './googlepay';

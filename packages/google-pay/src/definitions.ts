@@ -304,6 +304,14 @@ export interface GooglePayRequest {
   allowedPaymentMethods: GooglePayPaymentMethod[];
 }
 
+export interface GooglePayMakePaymentRequestResponse extends GooglePayVersion {
+  /**
+   * - Type: {@link GooglePayPaymentMethodData}
+   *
+   */
+  paymentMethodData: GooglePayPaymentMethodData;
+}
+
 export interface GooglePayPlugin {
   initGooglePayClient(
     request: GooglePayInitClientRequest,
@@ -313,7 +321,7 @@ export interface GooglePayPlugin {
   ): Promise<GooglePayCanMakePaymentsResponse>;
   makePaymentRequest(
     request: GooglePayPaymentRequest,
-  ): Promise<GooglePayPaymentMethodData & GooglePayVersion>;
+  ): Promise<GooglePayMakePaymentRequestResponse>;
 }
 
 export enum GooglePayErrorCodes {
