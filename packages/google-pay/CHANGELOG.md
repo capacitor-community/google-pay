@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.1.0] (2022-06-30)
+## 1.1.0 (2022-06-30)
 
 ### Features
 
@@ -11,9 +11,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
-## [1.0.2] (2022-06-30)
+## 1.0.2 (2022-06-30)
 
 
 ### Bug Fixes
@@ -48,4 +46,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * fixes cap sync on iOS devices 
-* fixes the build errors on iOS devices and adds stub methods.
+* fixes the build errors on iOS devices and adds stub methods. 
+
+
+
+
+
+
+All notable changes to this project will be documented in this file.
+
+See [Conventional Commits](<https://conventionalcommits.org>) for commit guidelines.
