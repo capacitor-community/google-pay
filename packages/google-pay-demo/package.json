@@ -1,6 +1,6 @@
 {
   "name": "google-pay-demo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -26,7 +26,7 @@
     "@capacitor/haptics": "^1.0.2",
     "@capacitor/keyboard": "^1.0.2",
     "@capacitor/status-bar": "^1.0.2",
-    "@ionic-enterprise/google-pay": "1.0.1",
+    "@ionic-enterprise/google-pay": "^1.0.2",
     "@ionic/angular": "^5.5.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
