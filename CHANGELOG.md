@@ -3,12 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [1.1.1](https://github.com/ionic-team/enterprise-google-pay/compare/1.1.0...1.1.1) (2022-08-03)
+## [1.1.1] (2022-08-03)
 
 
 ### Bug Fixes
 
-* make dependencies compatible with cap4 ([#10](https://github.com/ionic-team/enterprise-google-pay/issues/10)) ([3d86cdb](https://github.com/ionic-team/enterprise-google-pay/commit/3d86cdbffa616209cb9f3d89d652cd64b600507a))
+* make dependencies compatible with cap4  
 
 
 

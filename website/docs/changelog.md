@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1] (2022-08-03)
+
+
+### Bug Fixes
+
+* make dependencies compatible with cap4  
+
+
+
+
+
 ## 1.1.0 (2022-06-30)
 
 ### Features
