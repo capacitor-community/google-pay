@@ -3,9 +3,10 @@ package io.ionic.enterprise.googlepay
 import android.content.Intent
 import android.util.Log
 import com.getcapacitor.*
+import com.getcapacitor.annotation.CapacitorPlugin
 import com.google.android.gms.wallet.WalletConstants
 
-@NativePlugin(
+@CapacitorPlugin(
     requestCodes=[Constants.LOAD_PAYMENT_DATA_REQUEST_CODE]
 )
 class GooglePay : Plugin() {

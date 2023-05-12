@@ -5,8 +5,8 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && ng serve",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider &&  ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -20,13 +20,13 @@
     "@angular/platform-browser": "~11.2.0",
     "@angular/platform-browser-dynamic": "~11.2.0",
     "@angular/router": "~11.2.0",
-    "@capacitor/android": "^4.0.1",
-    "@capacitor/app": "^4.0.1",
-    "@capacitor/core": "^4.0.1",
-    "@capacitor/haptics": "^4.0.1",
-    "@capacitor/keyboard": "^4.0.1",
-    "@capacitor/status-bar": "^4.0.1",
-    "@ionic-enterprise/google-pay": "^1.1.1",
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/app": "^5.0.0",
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/haptics": "^5.0.0",
+    "@capacitor/keyboard": "^5.0.0",
+    "@capacitor/status-bar": "^5.0.0",
+    "@ionic-enterprise/google-pay": "../google-pay",
     "@ionic/angular": "^5.5.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
@@ -38,7 +38,7 @@
     "@angular/compiler": "~11.2.0",
     "@angular/compiler-cli": "~11.2.0",
     "@angular/language-service": "~11.2.0",
-    "@capacitor/cli": "^4.0.1",
+    "@capacitor/cli": "^5.0.0",
     "@ionic/angular-toolkit": "^3.1.0",
     "@types/jasmine": "~3.8.2",
     "@types/jasminewd2": "~2.0.3",
@@ -57,9 +57,5 @@
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
   },
-  "description": "An Ionic project",
-  "volta": {
-    "node": "14.19.1",
-    "npm": "6.14.16"
-  }
+  "description": "An Ionic project"
 }

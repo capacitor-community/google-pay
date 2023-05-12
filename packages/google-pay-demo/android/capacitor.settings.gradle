@@ -15,4 +15,4 @@ include ':capacitor-status-bar'
 project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacitor/status-bar/android')
 
 include ':ionic-enterprise-google-pay'
-project(':ionic-enterprise-google-pay').projectDir = new File('../node_modules/@ionic-enterprise/google-pay/android')
+project(':ionic-enterprise-google-pay').projectDir = new File('../../google-pay/android')
