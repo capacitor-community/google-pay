@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/ionic-team/enterprise-google-pay/compare/1.1.1...2.0.0) (2023-05-12)
+
+
+### Features
+
+* Capacitor 5 compatibility ([6a39ebc](https://github.com/ionic-team/enterprise-google-pay/commit/6a39ebcbd83954942a4b5937d09251cb7ab2c103))
+
+
+
+
+
 ## [1.1.1](https://github.com/ionic-team/enterprise-google-pay/compare/1.1.0...1.1.1) (2022-08-03)
 
 
