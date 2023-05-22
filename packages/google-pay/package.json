@@ -56,7 +56,14 @@
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "native",
+    "googlepay",
+    "google pay",
+    "android pay",
+    "payments",
+    "credit card",
+    "processing",
+    "payment"
   ],
   "capacitor": {
     "ios": {
