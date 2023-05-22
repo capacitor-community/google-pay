@@ -42,6 +42,7 @@ module.exports = {
         },
       ],
     },
-    'changelog'
+    'changelog',
+    'support-policy'
   ],
 };
