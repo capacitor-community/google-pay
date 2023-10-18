@@ -1,4 +1,4 @@
-import { WebPlugin, registerPlugin } from '@capacitor/core';
+import { WebPlugin } from '@capacitor/core';
 
 import type {
   GooglePayCanMakePaymentsResponse,
@@ -97,9 +97,3 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
     }
   }
 }
-
-const GooglePayImpl = registerPlugin<GooglePayPlugin>('GooglePay', {
-  web: () => import('./web').then(m => new m.GooglePayWeb()),
-});
-
-export { GooglePayImpl };

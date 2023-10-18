@@ -23,4 +23,5 @@ export {
   GooglePayVersion,
   GooglePayMakePaymentRequestResponse,
 } from './definitions';
+
 export * from './googlepay';
