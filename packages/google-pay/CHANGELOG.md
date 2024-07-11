@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/ionic-team/enterprise-google-pay/compare/2.1.2...2.2.1) (2024-07-11)
+
+
+### Bug Fixes
+
+* versioning ([3e577d7](https://github.com/ionic-team/enterprise-google-pay/commit/3e577d796bd32f74d46557d8d2ba3a999622f90d))
+
+
+
+
+
 ## [2.1.2] (2024-07-11)
 
 **Note:** Version bump only for package @ionic-enterprise/google-pay

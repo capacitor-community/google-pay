@@ -1,6 +1,6 @@
 {
   "name": "@ionic-enterprise/google-pay",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Capacitor Plugin used to enable Google Pay in an Application",
   "author": "Ionic Team <hi@ionic.io> (https://ionicframework.com)",
   "license": "SEE LICENSE",
