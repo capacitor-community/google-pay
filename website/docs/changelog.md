@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1] (2024-07-11)
+
+
+### Bug Fixes
+
+* add cap 6 compatibility  
+
+
+
+
+
 # [2.1.0] (2023-10-25)
 
 
