@@ -3,12 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [2.1.2](https://github.com/ionic-team/enterprise-google-pay/compare/2.1.1...2.1.2) (2024-07-11)
+## [2.1.2] (2024-07-11)
 
 
 ### Features
 
-* cap 6 ([1763fba](https://github.com/ionic-team/enterprise-google-pay/commit/1763fba8ca283e35d6e828d4494b87daacea9c7a))
+* cap 6 
 
 
 
