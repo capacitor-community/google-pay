@@ -2,24 +2,19 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "lerna": "^8.1.5",
+    "typescript": "^5.1.6"
   },
   "scripts": {
-    "lerna": "lerna",
-    "postinstall": "lerna bootstrap",
     "lerna:publish:dev": "lerna publish prerelease --conventional-commits --conventional-prerelease --no-changelog --preid dev-$(git rev-parse --short HEAD) --dist-tag dev --force-publish --no-git-tag-version --no-push --no-verify-access --yes",
     "lerna:publish:beta": "lerna publish from-git --conventional-commits --conventional-prerelease --preid beta --dist-tag next --force-publish --no-verify-access --yes",
     "lerna:publish:latest": "lerna publish from-git --conventional-commits --conventional-prerelease --dist-tag latest --force-publish --no-verify-access --yes",
     "lerna:version:beta": "lerna version prerelease --force-publish --preid beta",
     "lerna:version:latest": "lerna version --conventional-commits --force-publish",
-    "release:beta": "npm run lerna:version:beta",
-    "release:latest": "npm run lerna:version:latest",
+    "release:beta": "pnpm run lerna:version:beta",
+    "release:latest": "pnpm run lerna:version:latest",
     "clean-change-log": "node ./scripts/clean-changelog.js && lerna run clean-change-log",
-    "update-changelog": "npm run clean-change-log && node ./scripts/update-docs-changelog.js",
+    "update-changelog": "pnpm run clean-change-log && node ./scripts/update-docs-changelog.js",
     "release-ci": "lerna publish --conventional-commits --dist-tag latest --force-publish --no-verify-access --yes"
-  },
-  "volta": {
-    "node": "16.15.1",
-    "npm": "8.11.0"
   }
 }

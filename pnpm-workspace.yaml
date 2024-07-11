@@ -1,0 +1,3 @@
+packages:
+  - 'packages/google-pay'
+  - 'packages/google-pay-demo'
