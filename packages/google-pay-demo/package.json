@@ -1,7 +1,7 @@
 {
   "name": "google-pay-demo",
   "private": true,
-  "version": "0.0.1",
+  "version": "2.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,12 +12,12 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@ionic-enterprise/google-pay": "workspace:*",
     "@capacitor/app": "6.0.0",
     "@capacitor/core": "6.1.0",
     "@capacitor/haptics": "6.0.0",
     "@capacitor/keyboard": "6.0.1",
     "@capacitor/status-bar": "6.0.0",
+    "@ionic-enterprise/google-pay": "workspace:*",
     "@ionic/react": "^8.0.0",
     "@ionic/react-router": "^8.0.0",
     "@types/react-router": "^5.1.20",
