@@ -21,7 +21,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
       - name: Fetching all tags
         run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       - name: Install Dependencies
