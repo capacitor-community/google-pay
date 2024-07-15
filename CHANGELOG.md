@@ -3,12 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [2.2.2](https://github.com/ionic-team/enterprise-google-pay/compare/2.2.1...2.2.2) (2024-07-15)
+## [2.2.2] (2024-07-15)
 
 
 ### Bug Fixes
 
-* fix peer deps ([fb433e4](https://github.com/ionic-team/enterprise-google-pay/commit/fb433e4db40732a3bc13e6387a4bfd01cb3d53e1))
+* fix peer deps 
 
 
 
