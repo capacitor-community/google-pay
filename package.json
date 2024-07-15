@@ -15,6 +15,6 @@
     "release:latest": "pnpm run lerna:version:latest",
     "clean-change-log": "node ./scripts/clean-changelog.js && lerna run clean-change-log",
     "update-changelog": "pnpm run clean-change-log && node ./scripts/update-docs-changelog.js",
-    "release-ci": "lerna publish from-git --conventional-commits --dist-tag latest --force-publish --no-verify-access --yes"
+    "release-ci": "lerna publish --conventional-commits --dist-tag latest --force-publish --no-verify-access --yes"
   }
 }
