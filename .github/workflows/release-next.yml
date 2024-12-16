@@ -1,0 +1,46 @@
+name: Publish Next Release
+
+on: workflow_dispatch
+
+jobs: 
+  release-next:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
+    steps:      
+      - name: "Checkout"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetching all tags
+        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      - name: Install Dependencies
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+          npm whoami
+          pnpm i
+      - name: "Version and Publish"    
+        env: 
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
+          git config user.email "users.noreply.github.com"
+          pnpm run release:beta
+      - name: "Updating Changelogs"
+        run: |
+          git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
+          git config user.email "users.noreply.github.com"
+          pnpm run update-changelog
+          git add .
+          git commit -m "chore(docs): updating changelog"
+          git push origin ${{ github.ref }}
