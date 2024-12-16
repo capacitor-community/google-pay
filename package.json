@@ -11,6 +11,7 @@
     "lerna:publish:latest": "lerna publish from-git --conventional-commits --conventional-prerelease --dist-tag latest --force-publish --no-verify-access --yes",
     "lerna:version:beta": "lerna version prerelease --force-publish --preid beta",
     "lerna:version:latest": "lerna version --conventional-commits --force-publish",
+    "publish:rc": "lerna publish prerelease --conventional-commits --conventional-prerelease --preid next --dist-tag next --force-publish --no-verify-access --yes",
     "release:beta": "pnpm run lerna:version:beta",
     "release:latest": "pnpm run lerna:version:latest",
     "clean-change-log": "node ./scripts/clean-changelog.js && lerna run clean-change-log",
