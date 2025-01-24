@@ -5,16 +5,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [3.0.0] (2025-01-22)
 
-**Note:** Version bump only for package root
+**Warning**
+> This version has a known issue with JDK 21. Please use version 7.0.1 or later.
 
-
-
-
-
-# [3.0.0-next.1] (2024-12-16)
 
 **Note:** Version bump only for package root
-
 
 
 
