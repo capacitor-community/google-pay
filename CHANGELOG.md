@@ -3,12 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [3.0.1](https://github.com/ionic-team/enterprise-google-pay/compare/3.0.0...3.0.1) (2025-01-24)
+## [3.0.1] (2025-01-24)
 
 
 ### Bug Fixes
 
-* update kotlin version to support JDK 21 ([3c3cdcd](https://github.com/ionic-team/enterprise-google-pay/commit/3c3cdcd6dc5398034031ae92cfc18f446cd266ef))
+* update kotlin version to support JDK 21 
 
 
 
