@@ -13,6 +13,10 @@
   "types": "dist/esm/index.d.ts",
   "scripts": {
     "clean-change-log": "node ../../scripts/clean-changelog.js CHANGELOG.md",
+    "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
+    "verify:ios": "xcodebuild -scheme IonicEnterpriseGooglePay -destination generic/platform=iOS",
+    "verify:android": "cd android && ./gradlew clean build test && cd ..",
+    "verify:web": "npm run build",
     "lint": "npm run prettier -- --check && npm run swiftlint -- lint",
     "fmt": "npm run eslint -- --fix && npm run prettier -- --write && npm run swiftlint -- --fix --format",
     "eslint": "eslint . --ext ts",
@@ -26,9 +30,9 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "next",
-    "@capacitor/core": "next",
-    "@capacitor/ios": "next",
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/ios": "^7.0.0",
     "@ionic/eslint-config": "^0.3.0",
     "@ionic/markdown-docs-theme": "3.0.1",
     "@ionic/prettier-config": "^1.0.1",
@@ -51,7 +55,8 @@
     "dist/",
     "ios/",
     "android/",
-    "IonicEnterpriseGooglePay.podspec"
+    "IonicEnterpriseGooglePay.podspec",
+    "Package.swift"
   ],
   "keywords": [
     "capacitor",

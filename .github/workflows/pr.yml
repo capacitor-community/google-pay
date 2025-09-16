@@ -46,7 +46,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install
@@ -69,8 +68,34 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install
       - run: pnpm lerna run build
+  verify-plugin:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    needs:
+      - setup
+      - lint
+      - build
+    steps:
+    - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+    - uses: actions/checkout@v4
+    - uses: pnpm/action-setup@v4
+      name: Install pnpm
+      with:
+        version: 9
+        run_install: false
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Install dependencies
+      run: pnpm install
+    
+    - name: 'Verify iOS + Android + Web'
+      working-directory: ./packages/google-pay
+      run: pnpm run verify

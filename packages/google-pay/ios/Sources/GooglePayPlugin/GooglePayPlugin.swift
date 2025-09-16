@@ -6,7 +6,14 @@ import Capacitor
  * here: https://capacitorjs.com/docs/plugins/ios
  */
 @objc(GooglePayPlugin)
-public class GooglePayPlugin: CAPPlugin {
+public class GooglePayPlugin: CAPPlugin, CAPBridgedPlugin {
+    public let identifier = "GooglePayPlugin" 
+    public let jsName = "GooglePay" 
+    public let pluginMethods: [CAPPluginMethod] = [
+        CAPPluginMethod(name: "initGooglePayClient", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "canMakePayments", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "makePaymentRequest", returnType: CAPPluginReturnPromise),
+    ] 
     @objc func initGooglePayClient(_ call: CAPPluginCall) {
         call.reject("Google Pay is not available on iOS.")
     }
