@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/ionic-team/enterprise-google-pay/compare/3.0.1...3.1.0) (2025-12-09)
+
+
+### Bug Fixes
+
+* **android:** Remove res folder ([#19](https://github.com/ionic-team/enterprise-google-pay/issues/19)) ([833c046](https://github.com/ionic-team/enterprise-google-pay/commit/833c0460868a78a5ace6cda7e881339783d5b0b4))
+
+
+### Features
+
+* **ios:** Swift Package Manager compatibility ([#20](https://github.com/ionic-team/enterprise-google-pay/issues/20)) ([d222bf7](https://github.com/ionic-team/enterprise-google-pay/commit/d222bf7e4c2c851ed0a2b7187b392f48db0774b8))
+
+
+
+
+
 ## [3.0.1] (2025-01-24)
 
 

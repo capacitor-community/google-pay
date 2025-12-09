@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/ionic-team/enterprise-google-pay/compare/3.0.1...3.1.0) (2025-12-09)
+
+
+### Features
+
+* **ios:** Swift Package Manager compatibility ([#20](https://github.com/ionic-team/enterprise-google-pay/issues/20)) ([d222bf7](https://github.com/ionic-team/enterprise-google-pay/commit/d222bf7e4c2c851ed0a2b7187b392f48db0774b8))
+
+
+
+
+
 ## [3.0.1](https://github.com/ionic-team/enterprise-google-pay/compare/3.0.0...3.0.1) (2025-01-24)
 
 **Note:** Version bump only for package google-pay-demo

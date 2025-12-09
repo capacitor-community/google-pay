@@ -1,7 +1,7 @@
 {
   "name": "google-pay-demo",
   "private": true,
-  "version": "3.0.1",
+  "version": "3.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -15,8 +15,8 @@
     "@capacitor/android": "^8.0.0",
     "@capacitor/app": "^8.0.0",
     "@capacitor/core": "^8.0.0",
-    "@capacitor/ios": "^8.0.0",
     "@capacitor/haptics": "^8.0.0",
+    "@capacitor/ios": "^8.0.0",
     "@capacitor/keyboard": "^8.0.0",
     "@capacitor/status-bar": "^8.0.0",
     "@ionic-enterprise/google-pay": "workspace:*",
