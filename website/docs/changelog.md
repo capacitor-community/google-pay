@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0] (2025-12-09)
+
+
+### Bug Fixes
+
+* **android:** Remove res folder  
+
+
+### Features
+
+* **ios:** Swift Package Manager compatibility  
+
+
+
+
+
 ## [3.0.1] (2025-01-24)
 
 
