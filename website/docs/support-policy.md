@@ -9,8 +9,10 @@ This policy is for Google Pay as maintained by Ionic. Capacitor Core, Capacitor 
 
 | Version |      Status       |    Released     | Active Support Ends | Long-Term Support Ends |
 | :-----: | :---------------: | :-------------: | :-----------------: | :--------------------: |
-|   V1    | Long Term Support | August 18, 2021 |    May 12, 2023     |      May 12, 2024      |
-|   V2    |  Active Support   |  May 12, 2023   |         TBD         |          TBD           |
+|   V1    |   Not Supported   | August 18, 2021 |    May 12, 2023     |      May 12, 2024      |
+|   V2    | Long Term Support |  May 12, 2023   |    Dec 9, 2025      |       Dec 9, 2026      |
+|   V3    | Long Term Support |  May 12, 2023   |    Dec 9, 2025      |       Dec 9, 2026      |
+|   V4    |  Active Support   |  May 12, 2023   |         TBD         |          TBD           |
 
 ### Support Policy
 
