@@ -49,7 +49,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
       - run: pnpm lerna run lint
   build:
     runs-on: macos-latest
@@ -72,7 +72,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
       - run: pnpm lerna run build
   verify-plugin:
     runs-on: macos-latest
@@ -97,7 +97,7 @@ jobs:
         cache: 'pnpm'
 
     - name: Install dependencies
-      run: pnpm install
+      run: pnpm install --no-frozen-lockfile
     
     - name: 'Verify iOS + Android + Web'
       working-directory: ./packages/google-pay
