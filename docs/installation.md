@@ -3,14 +3,13 @@ title: Installation
 sidebar_label: Installation
 ---
 
-__Don't have an Google Pay subscription?__ [Try it free now](http://dashboard.ionicframework.com/personal/apps?native_trial=1).
 
 Follow these steps to install Google Pay into your app.
 
-> Google Pay plugin is only available for projects running Capacitor 3 or later.
+> This plugin requires Capacitor 8 or later.
 
 ```bash
-npm install @ionic-enterprise/google-pay
+npm install @capacitor-community/google-pay
 npx cap sync
 ```
 
@@ -25,10 +24,12 @@ Add the following line to your native Android project to enable the Google Walle
 
 ## Getting Started
 
-Integrating with your application only requires three basic API calls. First, initialize the Google Pay client using [initGooglePayClient](classes/googlepay.md#initgooglepayclient). Second, check if the user is running a device capable of using Google Pay in the current context by calling the [canMakePayments](classes/googlepay.md#canmakepayments) method, then make the payment request using [makePaymentRequest](classes/googlepay.md#makepaymentrequest).
+Integrating with your application only requires three basic API calls. First, initialize the Google Pay client using `initGooglePayClient`. Second, check if the user is running a device capable of using Google Pay in the current context by calling the `canMakePayments` method, then make the payment request using `makePaymentRequest`.
 
 ```typescript
 await GooglePay.initGooglePayClient();
 await GooglePay.canMakePayments({});
 await GooglePay.makePaymentRequest({});
 ```
+
+See the [API reference](../README.md#api) in the main README for full method signatures and types.

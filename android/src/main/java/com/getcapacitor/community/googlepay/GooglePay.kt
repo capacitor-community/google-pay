@@ -1,4 +1,4 @@
-package io.ionic.enterprise.googlepay
+package com.getcapacitor.community.googlepay
 
 import android.content.Intent
 import android.util.Log

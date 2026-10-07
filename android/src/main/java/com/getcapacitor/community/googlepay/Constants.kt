@@ -1,4 +1,4 @@
-package io.ionic.enterprise.googlepay
+package com.getcapacitor.community.googlepay
 
 object Constants {
     /**

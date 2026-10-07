@@ -22,7 +22,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    namespace = "io.ionic.enterprise.googlepay.capacitorplugingooglepay"
+    namespace = "com.getcapacitor.community.googlepay"
     compileSdkVersion = project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 36
     defaultConfig {
         minSdkVersion project.hasProperty('minSdkVersion') ? rootProject.ext.minSdkVersion : 24

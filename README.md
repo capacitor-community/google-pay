@@ -17,6 +17,11 @@
 | -----------| -------| -------|
 | Capacitor Community | [capacitor-community](https://github.com/capacitor-community) | |
 
+## Documentation
+
+- [Overview](docs/overview.md)
+- [Installation](docs/installation.md)
+
 ## Installation
 
 ```bash

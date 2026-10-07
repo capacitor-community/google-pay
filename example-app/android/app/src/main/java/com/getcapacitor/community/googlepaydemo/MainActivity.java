@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.getcapacitor.community.googlepaydemo;
 
 import com.getcapacitor.BridgeActivity;
 
