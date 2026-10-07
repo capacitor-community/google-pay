@@ -32,8 +32,8 @@ const Home: React.FC = () => {
         tokenizationSpecification: {
           type: 'PAYMENT_GATEWAY',
           parameters: {
-            gateway: 'example',
-            gatewayMerchantId: 'exampleGatewayMerchantId',
+            gateway: 'REPLACE_WITH_GATEWAY',
+            gatewayMerchantId: 'REPLACE_WITH_GATEWAY_MERCHANT_ID',
           },
         },
       },
@@ -64,8 +64,8 @@ const Home: React.FC = () => {
       const res = await GooglePay.makePaymentRequest({
         allowedPaymentMethods: gpayConfig.allowedPaymentMethods,
         merchantInfo: {
-          merchantId: '12345678901234567890',
-          merchantName: 'Dallas Test Merchant',
+          merchantId: 'REPLACE_WITH_MERCHANT_ID',
+          merchantName: 'REPLACE_WITH_MERCHANT_NAME',
         },
         transactionInfo: {
           countryCode: 'US',
