@@ -2,11 +2,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "IonicEnterpriseGooglePay",
+    name: "CapacitorCommunityGooglePay",
     platforms: [.iOS(.v15)],
     products: [
         .library(
-            name: "IonicEnterpriseGooglePay",
+            name: "CapacitorCommunityGooglePay",
             targets: ["GooglePayPlugin"])
     ],
     dependencies: [

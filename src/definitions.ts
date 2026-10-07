@@ -133,9 +133,9 @@ export interface GooglePayBillingAddressParameters {
 }
 
 export enum GooglePayBillingAddressFormat {
-  /** Name, country code, and postal code (default). **/
+  /** Name, country code, and postal code (default). */
   Minimal = 'MIN',
-  /** Name, street address, locality, region, country code, and postal code. **/
+  /** Name, street address, locality, region, country code, and postal code. */
   Full = 'FULL',
 }
 
@@ -180,7 +180,7 @@ export interface GooglePayTransactionInfo {
    *
    * The total monetary value of the transaction with an optional decimal precision of two places.
    *
-   * The format should follow the regex format: ^[0-9]+(\.[0-9][0-9])?$
+   * The format should follow the regex format: `^[0-9]+(\.[0-9][0-9])?$`
    */
   totalPrice: string;
   /**
