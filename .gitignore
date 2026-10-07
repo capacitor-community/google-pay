@@ -5,5 +5,3 @@ dist/
 *.tgz
 .env
 .vscode
-lerna-debug.log
-packages/google-pay-demo_OLD
