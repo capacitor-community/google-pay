@@ -17,7 +17,7 @@
   "scripts": {
     "clean-change-log": "node scripts/clean-changelog.js CHANGELOG.md",
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
-    "verify:ios": "xcodebuild -scheme CapacitorCommunityGooglePay -destination generic/platform=iOS",
+    "verify:ios": "xcodebuild -scheme IonicEnterpriseGooglePay -destination generic/platform=iOS",
     "verify:android": "cd android && ./gradlew clean build test && cd ..",
     "verify:web": "npm run build",
     "lint": "npm run prettier -- --check && npm run swiftlint -- lint",
@@ -29,7 +29,6 @@
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "remove-void-implements": "node scripts/remove-void-implements.js",
-    "docs": "typedoc --plugin typedoc-plugin-markdown --theme ./node_modules/@ionic/markdown-docs-theme/dist src/index.ts && rm -rf website/docs/{enums,interfaces,classes} && mv api/{enums,interfaces,classes} website/docs && mv api/modules.md website/docs/modules.md && rm -rf api",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
@@ -46,8 +45,6 @@
     "rimraf": "^6.1.0",
     "rollup": "^4.53.2",
     "swiftlint": "^2.0.0",
-    "typedoc": "^0.20.30",
-    "typedoc-plugin-markdown": "~3.6.0",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {

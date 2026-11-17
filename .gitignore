@@ -7,3 +7,9 @@ dist/
 .vscode
 lerna-debug.log
 packages/google-pay-demo_OLD
+android/.gradle/
+android/build/
+android/local.properties
+.build/
+.swiftpm/
+*.iml

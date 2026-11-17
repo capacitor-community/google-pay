@@ -49,7 +49,7 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
         });
         resolve({ isReady: true });
       });
-      scriptEl.addEventListener('error', err => {
+      scriptEl.addEventListener('error', (err) => {
         console.error('Unable to load Google Pay API: ', err);
         reject(getGooglePayError(GooglePayErrorCodes.APIError, err));
       });
@@ -57,9 +57,7 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
     });
   }
 
-  async canMakePayments(
-    request: GooglePayRequest,
-  ): Promise<GooglePayCanMakePaymentsResponse> {
+  async canMakePayments(request: GooglePayRequest): Promise<GooglePayCanMakePaymentsResponse> {
     try {
       const isReady = await this.paymentsClient.isReadyToPay({
         ...this._googlePayVersion,
@@ -72,9 +70,7 @@ export class GooglePayWeb extends WebPlugin implements GooglePayPlugin {
     }
   }
 
-  async makePaymentRequest(
-    request: GooglePayPaymentRequest,
-  ): Promise<GooglePayMakePaymentRequestResponse> {
+  async makePaymentRequest(request: GooglePayPaymentRequest): Promise<GooglePayMakePaymentRequestResponse> {
     try {
       const paymentData = await this.paymentsClient.loadPaymentData({
         ...this._googlePayVersion,
