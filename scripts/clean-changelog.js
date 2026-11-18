@@ -19,10 +19,7 @@ fs.readFile(filePath, 'utf8', (err, data) => {
 
   // replace git commit links to repo
   // ie: ([832fc23](https://github.com/ionic-team/enterprise-google-pay/commit/832fc2307a6095071cc424b22517b1a0f9be1551))
-  data = data.replace(
-    /\(\[\S*\]\([^\s]*github\.com\/ionic-team\/enterprise-google-pay[^\s]*\)\)/g,
-    '',
-  );
+  data = data.replace(/\(\[\S*\]\([^\s]*github\.com\/ionic-team\/enterprise-google-pay[^\s]*\)\)/g, '');
 
   // Replace lerna default header with ##Change Log
   data = data.replace(
@@ -40,7 +37,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
     '',
   );
 
-  fs.writeFile(filePath, data, err => {
+  fs.writeFile(filePath, data, (err) => {
     if (err) {
       console.error(err);
     }

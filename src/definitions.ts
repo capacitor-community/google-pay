@@ -406,15 +406,9 @@ export interface GooglePayMakePaymentRequestResponse extends GooglePayVersion {
 }
 
 export interface GooglePayPlugin {
-  initGooglePayClient(
-    request: GooglePayInitClientRequest,
-  ): Promise<GooglePayInitClientResponse>;
-  canMakePayments(
-    request: GooglePayRequest,
-  ): Promise<GooglePayCanMakePaymentsResponse>;
-  makePaymentRequest(
-    request: GooglePayPaymentRequest,
-  ): Promise<GooglePayMakePaymentRequestResponse>;
+  initGooglePayClient(request: GooglePayInitClientRequest): Promise<GooglePayInitClientResponse>;
+  canMakePayments(request: GooglePayRequest): Promise<GooglePayCanMakePaymentsResponse>;
+  makePaymentRequest(request: GooglePayPaymentRequest): Promise<GooglePayMakePaymentRequestResponse>;
 }
 
 export enum GooglePayErrorCodes {
@@ -446,10 +440,7 @@ export interface GooglePayError {
 }
 
 /** @ignore */
-export function getGooglePayError(
-  code: GooglePayErrorCodes,
-  error?: Error | ErrorEvent,
-): GooglePayError {
+export function getGooglePayError(code: GooglePayErrorCodes, error?: Error | ErrorEvent): GooglePayError {
   let message = '';
   switch (code) {
     case GooglePayErrorCodes.ClientNotInitialized:

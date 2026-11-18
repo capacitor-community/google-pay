@@ -11,7 +11,7 @@ import type {
 } from './definitions';
 
 const GooglePayImpl = registerPlugin<GooglePayPlugin>('GooglePay', {
-  web: () => import('./web').then(m => new m.GooglePayWeb()),
+  web: () => import('./web').then((m) => new m.GooglePayWeb()),
 });
 
 export class GooglePay {
@@ -32,9 +32,7 @@ export class GooglePay {
    *  }
    * ```
    */
-  public static initGooglePayClient(
-    request: GooglePayInitClientRequest,
-  ): Promise<GooglePayInitClientResponse> {
+  public static initGooglePayClient(request: GooglePayInitClientRequest): Promise<GooglePayInitClientResponse> {
     return GooglePayImpl.initGooglePayClient(request);
   }
 
@@ -51,9 +49,7 @@ export class GooglePay {
    * }
    * ```
    */
-  public static canMakePayments(
-    request: GooglePayRequest,
-  ): Promise<GooglePayCanMakePaymentsResponse> {
+  public static canMakePayments(request: GooglePayRequest): Promise<GooglePayCanMakePaymentsResponse> {
     return GooglePayImpl.canMakePayments(request);
   }
 
@@ -67,9 +63,7 @@ export class GooglePay {
    * console.log('Payment Response: ', JSON.stringify(res));
    * ```
    */
-  public static makePaymentRequest(
-    request: GooglePayPaymentRequest,
-  ): Promise<GooglePayMakePaymentRequestResponse> {
+  public static makePaymentRequest(request: GooglePayPaymentRequest): Promise<GooglePayMakePaymentRequestResponse> {
     return GooglePayImpl.makePaymentRequest(request);
   }
 }

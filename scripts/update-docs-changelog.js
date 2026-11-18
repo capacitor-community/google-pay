@@ -18,7 +18,7 @@ sidebar_label: Changelog
     `,
   );
 
-  fs.writeFile('./website/docs/changelog.md', data, err => {
+  fs.writeFile('./website/docs/changelog.md', data, (err) => {
     if (err) {
       console.error(err);
     }
