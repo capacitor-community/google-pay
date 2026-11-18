@@ -441,7 +441,7 @@ export interface GooglePayError {
 
 /** @ignore */
 export function getGooglePayError(code: GooglePayErrorCodes, error?: Error | ErrorEvent): GooglePayError {
-  let message = '';
+  let message: string;
   switch (code) {
     case GooglePayErrorCodes.ClientNotInitialized:
       message = 'Plugin not initialized, call initGooglePayClient() first!';
